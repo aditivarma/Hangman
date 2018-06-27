@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="jquery-3.1.1.min.js"></script>
+        <link rel="stylesheet" href="bootstrap.min.css">
+        <style>
+        button {
+            height: 65px;
+            text-align: center;
+            font-size: 25px;
+            width: 65px;
+            font-family: 'Courier New';
+            transform: translate(750%, 650%);
+        }
+
+        #box{
+            height: 100px;
+            width: 600px;
+            background-color:lightblue;
+            transform: translate(520px, -150px);
+            font-size: 45px;
+            font-family: 'Courier New';
+        }
+
+        button {
+            background: linear-gradient(to bottom right,lightblue, white);
+        }
+
+        div.header span {
+            border-bottom: 2px solid black;
+            font-size: 72px;
+            margin: 3px;
+            font-family: 'Courier New', Courier, monospace;
+            position: relative;
+            top: 150px;
+            left: 700px;
+            bottom: 100px;
+        }
+
+        img.hangmanFrame {
+            width: 30%;
+            height:30%;
+            border: 2px solid black;
+            position: relative;
+            top: -20px;
+            left: 50px;
+        }
+        </style>
+    </head>
+    <body>
+        <div class="header">
+            <span id="letter0">h</span>
+            <span id="letter1">e</span>
+            <span id="letter2">l</span>
+            <span id="letter3">l</span>
+            <span id="letter4">o</span>
+            <span id="letter5">w</span>
+            <span id="letter6">o</span>
+            <span id="letter7">r</span>
+            <span id="letter8">l</span>
+            <span id="letter9">d</span>
+        </div>
+        <img src= "Hangman0.jpg" class="hangmanFrame" id="hangman"/>
+        <div id= "line1">
+            <button type="button" id="q" onclick="inputs('q')">Q</button>
+            <button type='button' id='w' onclick="inputs('w')">W</button>
+            <button type='button' id='e' onclick="inputs('e')">E</button>
+            <button type='button' id='r' onclick="inputs('r')">R</button>
+            <button type='button' id='t' onclick="inputs('t')">T</button>
+            <button type='button' id='y' onclick="inputs('y')">Y</button>
+            <button type='button' id='u' onclick="inputs('u')">U</button>
+            <button type='button' id='i' onclick="inputs('i')">I</button>
+            <button type='button' id='o' onclick="inputs('o')">O</button>
+            <button type='button' id='p' onclick="inputs('p')">P</button>
+        </div>
+            
+        <div id="line2">
+            <button type='button' id='a' onclick="inputs('a')">A</button>
+            <button type='button' id='s' onclick="inputs('s')">S</button>
+            <button type='button' id='d' onclick="inputs('d')">D</button>
+            <button type='button' id='f' onclick="inputs('f')">F</button>
+            <button type='button' id='g' onclick="inputs('g')">G</button>
+            <button type='button' id='h' onclick="inputs('h')">H</button>
+            <button type='button' id='j' onclick="inputs('j')">J</button>
+            <button type='button' id='k' onclick="inputs('k')">K</button>
+            <button type='button' id='l' onclick="inputs('l')">L</button>
+        </div>
+            
+        <div id="line3">
+            <button type='button' id='z' onclick="inputs('z')">Z</button>
+            <button type='button' id='x' onclick="inputs('x')">X</button>
+            <button type='button' id='c' onclick="inputs('c')">C</button>
+            <button type='button' id='v' onclick="inputs('v')">V</button>
+            <button type='button' id='b' onclick="inputs('b')">B</button>
+            <button type='button' id='n' onclick="inputs('n')">N</button>
+            <button type='button' id='m' onclick="inputs('m')">M</button>
+        </div>
+        <div id='box'></div>
+            
+    </body>
+    <script>
+        function inputs(letter){
+        var input = letter
+        document.getElementById (letter).disabled = true;
+        document.getElementById('box').innerHTML += letter;
+        }
+        var numberOfErrors = 0;
+        var wordArray = ["able","apple","abandon","absolve","armed","absence","ascends","abysmal","acronym","agonise","alloyed","antique","bemuses","beggars","blinked","bridged","broadens","brushed","buckets","believer","blinding","brimming","bullpen","callous","campers","caramel","carpool"];
+        var MaxLettersInWord = 9;
+        var randomElement = Math.round(Math.random() * (wordArray.length - 1));
+        var randomWord = wordArray[randomElement];
+        console.log(randomWord);
+        for (i = 0; i < randomWord.length; i++)
+        {
+            var assign = document.getElementById('letter' + i);
+            assign.innerText = '\xa0';
+            if (randomWord.length < MaxLettersInWord)
+        {
+            for (a = (randomWord.length); a <= MaxLettersInWord; a++){
+                var assignNothing = document.getElementById('letter' + a);
+                var textAtExtraSpan = null;
+                assignNothing.innerText = textAtExtraSpan;
+            }  
+        } 
+    }
+     /*   while (numberOfErrors < 6){
+        }
+            if (numberOfDashesFilled = randomWord.length && numberOfErrors !== 6 ){
+                alert("You win!")
+            }
+            for(a = 0; a < randomWord.length; a++){
+                if (randomWord.charAt(a) === input){
+                    var assignLetter = document.getElementById('letter' + a);
+                    assignLetter.innerText = input;
+                    var assigned = 1;
+                    var numberOfDashesFilled = numberOfDashesFilled + 1 ;
+                } 
+            }
+            if (assigned !== 1){
+                alert('Letter not present in word');
+                numberOfErrors++;
+                var imageChange = document.getElementById('hangman');
+                imageChange.src = "Hangman"+numberOfErrors+".jpg";
+            }
+        if (numberOfErrors = 6){
+            alert('You lose')
+        } */
+    </script>
+</html>

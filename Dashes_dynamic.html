@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <style>
+        div.dynamicLine{
+            position: relative;
+            top:150px;
+            left: 700px;
+            bottom: 100px;
+        }
+    </style>
+
+    <script>
+        var wordArray = ['Apple', 'Banana','Caramel'];
+        var randomElement = Math.round(Math.random() * (wordArray.length - 1));
+        var randomWord = wordArray[randomElement];
+        //console.log(randomWord);
+        var numberOfDashes = randomWord.length;
+        var x1Line = -10;
+        const y1Line = 0;
+        const y2Line = 0;
+        function drawLine(numberOfDashes) 
+        {
+            for (i = 1;i <= numberOfDashes;i++)
+            {
+                x1Line = x1Line + 10 
+                var x2Line = x1Line + 20
+                /*
+                var xCoordinates =  Math.pow((x2 - x1), 2);
+                var yCoordinates =  Math.pow((y2 - y1), 2);
+                var width = Math.sqrt(xCoordinates + yCoordinates);
+                slopeInRadians = Math.atan(y1 - y2,x1 - x2)
+                slopeInDegrees = (slopeInRadians * 180) / Math.PI;
+                line = document.getElementById(lineID)
+                */
+                line = document.getElementById(dynamicLine);
+                x1Line = x1Line.toString();
+                x1Line = x2Line.toString();
+                y1Line = y1Line.toString();
+                y2Line = y2Line.toString();
+                dynamicLine.setAttribute("x1", x1Line);
+                dynamicLine.setAttribute("x2", x2Line);
+                dynamicLine.setAttribute("y1", y1Line);
+                dynamicLine.setAttribute("y2", y2Line);
+            }
+        }
+</script>
+</head>
+<body>
+    <div class="dynamicLine">
+        <svg height="100%" width="100%">
+                <line style="stroke:rgb(35,206,250);stroke-width: 8px"/>
+        Dashes not supported by browser
+    </svg>
+    </div>
+</body>
+</html>

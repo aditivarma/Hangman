@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="jquery-3.1.1.min.js"></script>
+    <link rel="stylesheet" href="bootstrap.min.css">
+    
+    <style>
+        div.header span {
+            border-bottom: 2px solid black;
+            font-size: 72px;
+            margin: 3px;
+            font-family: 'Courier New', Courier, monospace;
+            position: relative;
+            top: 150px;
+            left: 700px;
+            bottom: 100px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="header">
+       <span id="letter0">H</span>
+       <span id="letter1">A</span>
+       <span id="letter2">N</span>
+       <span id="letter3">G</span>
+       <span id="letter4">M</span>
+       <span id="letter5">A</span>
+       <span id="letter6">N</span>
+       <span id="letter7"></span>
+       <span id="letter8"></span>
+       <span id="letter9"></span>
+    </div>
+</body>
+</html>
+<!--Capital letter size 100px has a width of ~75 
+    Lowercase letter 'a' size 100px has a width of ~60 -->
+
+<script>
+    var wordArray = ["abandon","absolve","absence","ascends","abysmal","acronym","agonise","alloyed","antique","bemuses","beggars","blinked","bridged","broadens","brushed","buckets","believer","blinding","brimming","bullpen","callous","campers","caramel","carpool"];
+    var MaxLettersInWord = 9;
+    var randomElement = Math.round(Math.random() * (wordArray.length - 1));
+    var randomWord = wordArray[randomElement];
+    console.log(randomWord);
+    for (i=0; i < randomWord.length; i++)
+    {
+        var assign = document.getElementById('letter' + i);
+        var textAtSpan = randomWord.charAt(i);
+        console.log(textAtSpan);
+        assign.innerText = textAtSpan.toString();
+    
+        if (randomWord.length < MaxLettersInWord)
+        {
+            for (a = (randomWord.length); a <= MaxLettersInWord; a++){
+                var assignNothing = document.getElementById('letter' + a);
+                var textAtExtraSpan = null;
+                assignNothing.innerText = textAtExtraSpan;
+            }  
+        } 
+    }
+</script>
