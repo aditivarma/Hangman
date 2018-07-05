@@ -10,14 +10,14 @@
             font-size: 25px;
             width: 65px;
             font-family: 'Courier New';
-            transform: translate(750%, 650%);
+            transform: translate(600px, -200px);
         }
 
         #box{
             height: 100px;
             width: 600px;
             background-color:lightblue;
-            transform: translate(520px, -150px);
+            transform: translate(600px, -770px);
             font-size: 45px;
             font-family: 'Courier New';
         }
@@ -98,12 +98,7 @@
         <div id='box'></div>
             
     </body>
-    <script>
-        function inputs(letter){
-        var input = letter
-        document.getElementById (letter).disabled = true;
-        document.getElementById('box').innerHTML += letter;
-        }
+    <script>        
         var numberOfErrors = 0;
         var wordArray = ["able","apple","abandon","absolve","armed","absence","ascends","abysmal","acronym","agonise","alloyed","antique","bemuses","beggars","blinked","bridged","broadens","brushed","buckets","believer","blinding","brimming","bullpen","callous","campers","caramel","carpool"];
         var MaxLettersInWord = 9;
@@ -123,27 +118,40 @@
             }  
         } 
     }
-     /*   while (numberOfErrors < 6){
-        }
-            if (numberOfDashesFilled = randomWord.length && numberOfErrors !== 6 ){
-                alert("You win!")
-            }
+        var numberOfDashesFilled = 0;
+        var input;
+        function inputs(letter){
+        input = letter
+        document.getElementById(letter).disabled = true;
+        document.getElementById('box').innerHTML += letter;
+         //while (numberOfErrors < 6){
             for(a = 0; a < randomWord.length; a++){
-                if (randomWord.charAt(a) === input){
+                if (randomWord.charAt(a) == input){
                     var assignLetter = document.getElementById('letter' + a);
                     assignLetter.innerText = input;
                     var assigned = 1;
-                    var numberOfDashesFilled = numberOfDashesFilled + 1 ;
+                    numberOfDashesFilled++;
+                    console.log(numberOfDashesFilled);
                 } 
             }
             if (assigned !== 1){
                 alert('Letter not present in word');
                 numberOfErrors++;
+                console.log(numberOfErrors);
                 var imageChange = document.getElementById('hangman');
                 imageChange.src = "Hangman"+numberOfErrors+".jpg";
             }
-        if (numberOfErrors = 6){
-            alert('You lose')
-        } */
+            if (numberOfErrors === 6){
+                alert('You lose. The word was ' + randomWord);
+                for (count = 0; count < 26; count++){
+                    var alphabet = ['q','w','e','r','t','y','u','i','o','p','a','s','d','f','g','h','j','k','l','z','x','c','v','b','n','m']
+                    document.getElementById(alphabet[count]).disabled = true;
+                }
+            } 
+            if (numberOfDashesFilled == randomWord.length && numberOfErrors < 6 ){
+                alert("You win!")
+            } 
+        //}
+    }
     </script>
 </html>
